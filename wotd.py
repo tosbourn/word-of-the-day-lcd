@@ -31,7 +31,8 @@ class LCD:
       listener.register(i, pifacecad.IODIR_FALLING_EDGE, self.exit_gracefully)
     listener.activate()
 
-  def exit_gracefully(event, self):
+  # todo: work out what the second event is
+  def exit_gracefully(event, unknown_second_value):
     self.lcd.backlight_off()
     self.lcd.clear()
     self.lcd.display_off()
