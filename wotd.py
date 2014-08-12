@@ -13,7 +13,7 @@ class LCD:
     self.lcd = self.cad.lcd
     self.lcd.backlight_on()
     self.lcd.blink_off()
-    self.get_word_of_the_day(self)
+    self.get_word_of_the_day()
 
   def get_word_of_the_day(self):
     client = swagger.ApiClient(WORDNIK_API_KEY, WORDNIK_URL)
