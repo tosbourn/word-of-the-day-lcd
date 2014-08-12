@@ -33,10 +33,10 @@ class LCD:
 
   # todo: work out what the second event is
   def exit_gracefully(self, event, unknown_second_value=1):
-    self.lcd.backlight_off()
     self.lcd.clear()
-    self.lcd.display_off()
     self.lcd.cursor_off()
+    self.lcd.display_off()
+    self.lcd.backlight_off()
 
 if __name__ == "__main__":
   lcd = LCD()
