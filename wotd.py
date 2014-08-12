@@ -25,11 +25,6 @@ class LCD:
     self.lcd.write(object.word + "\n")
     self.lcd.write(object.definitions[0].text)
 
-class Debug:
-  def output(object):
-    print object.word
-    print object.definitions[0].text
-
 if __name__ == "__main__":
   wotd = get_word_of_the_day()
   displayer = LCD()
