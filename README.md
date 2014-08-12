@@ -8,6 +8,8 @@ It also uses the wordnik API so we need to install it:
 
 `easy_install wordnik`
 
+# Usage
+
 Because of the wordnik integration we need an API key, for this version you just need to run an export with your key;
 
 ```
@@ -15,6 +17,8 @@ Because of the wordnik integration we need an API key, for this version you just
   python wotd.py
 
 ```
+
+Press any button to exit.
 
 # Notes
 
