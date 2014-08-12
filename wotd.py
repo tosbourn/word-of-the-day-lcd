@@ -1,6 +1,7 @@
 #!/usr/bin/env/ python
 
 import os
+import sys
 from wordnik import *
 import pifacecad
 
@@ -37,6 +38,7 @@ class LCD:
     self.lcd.cursor_off()
     self.lcd.display_off()
     self.lcd.backlight_off()
+    sys.exit()
 
 if __name__ == "__main__":
   lcd = LCD()
