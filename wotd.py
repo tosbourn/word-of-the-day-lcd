@@ -32,7 +32,7 @@ class LCD:
     listener.activate()
 
   # todo: work out what the second event is
-  def exit_gracefully(event, unknown_second_value):
+  def exit_gracefully(event, unknown_second_value, self):
     self.lcd.backlight_off()
     self.lcd.clear()
     self.lcd.display_off()
