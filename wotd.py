@@ -2,6 +2,7 @@
 
 import os
 from wordnik import *
+import pifacecad
 
 WORDNIK_URL = 'http://api.wordnik.com/v4'
 WORDNIK_API_KEY = os.environ["worknik_api_key"]
@@ -15,6 +16,22 @@ def display_word_of_the_day(wotd):
   print wotd.word
   print wotd.definitions[0].text
 
+class LCD:
+  def __init__(self):
+    self.cad = pifacecad.PiFaceCAD()
+    self.lcd = self.cad.lcd
+    self.lcd.backlight_on()
+    self.lcd.blink_off()
+  def output(self, object):
+    self.lcd.write(object.word + "\n")
+    self.lcd.write(object.definitions[0].text)
+
+class Debug:
+  def output(object):
+    print object.word
+    print object.definitions[0].text
+
 if __name__ == "__main__":
   wotd = get_word_of_the_day()
-  display_word_of_the_day(wotd)
+  displayer = LCD()
+  display_word_of_the_day(wotd, displayer)
