@@ -39,6 +39,7 @@ class LCD:
     self.lcd.display_off()
     self.lcd.backlight_off()
     sys.exit()
+    return
 
 if __name__ == "__main__":
   lcd = LCD()
