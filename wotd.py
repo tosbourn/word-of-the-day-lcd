@@ -3,6 +3,7 @@
 import os
 from wordnik import *
 import pifacecad
+import time
 
 WORDNIK_URL = 'http://api.wordnik.com/v4'
 WORDNIK_API_KEY = os.environ["wordnik_api_key"]
