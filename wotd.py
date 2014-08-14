@@ -14,7 +14,6 @@ class LCD:
     self.lcd.backlight_on()
     self.lcd.blink_off()
     self.get_word_of_the_day()
-    self.listen_for_button_press()
 
   def get_word_of_the_day(self):
     client = swagger.ApiClient(WORDNIK_API_KEY, WORDNIK_URL)
@@ -22,17 +21,21 @@ class LCD:
     self.wotd = words_api.getWordOfTheDay()
 
   def display_word_of_the_day(self):
-    self.lcd.write(self.wotd.word + "\n")
-    self.lcd.write(self.wotd.definitions[0].text)
+    output = self.wotd.word + " - " + self.wotd.definitions[0].text
+    sentence_length = len(output)
+    overflow = sentence_length - 16
+    self.lcd.write(output)
 
-  def listen_for_button_press(self):
-    listener = pifacecad.SwitchEventListener(chip=self.cad)
-    for i in range(8):
-      listener.register(i, pifacecad.IODIR_FALLING_EDGE, self.exit_gracefully)
-    listener.activate()
+    while overflow > 0:
+      time.sleep(0.5)
+      self.lcd.move_right()
+      overflow -= 1
 
-  # todo: work out what the second event is
-  def exit_gracefully(self, event, unknown_second_value=1):
+    time.sleep(5)
+
+    self.exit_gracefully()
+
+  def exit_gracefully(self):
     self.lcd.clear()
     self.lcd.cursor_off()
     self.lcd.display_off()
